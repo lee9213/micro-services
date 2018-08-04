@@ -1,14 +1,10 @@
 server:
   port: 20000
-
-############################ HTTP START ############################################
 spring:
+  application:
+    name: spring-cloud-config-git-service
   cloud:
     config:
       server:
         git:
           uri: https://github.com/lee9213/spring-cloud-config-files.git
-          skipSslValidation: true
-  application:
-    name: spring-cloud-config-git-service
-############################ HTTP END ############################################
