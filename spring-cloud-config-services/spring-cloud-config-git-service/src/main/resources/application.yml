@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://github.com/lee9213/micro-services.git
           skipSslValidation: true
-      name: config-git
+      name: git
   application:
     name: spring-cloud-config-git-service
 ############################ HTTP END ############################################
