@@ -3,6 +3,7 @@ package com.lee9213.spring.boot.admin;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author lee9213@163.com
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @EnableAdminServer
+@EnableDiscoveryClient
 public class SpringBootAdminApplication {
 
 
