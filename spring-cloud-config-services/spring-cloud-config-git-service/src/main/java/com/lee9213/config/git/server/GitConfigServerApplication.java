@@ -13,10 +13,10 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @SpringBootApplication
 @EnableConfigServer
 @EnableDiscoveryClient
-public class ConfigServerApplication {
+public class GitConfigServerApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(ConfigServerApplication.class, args);
+        SpringApplication.run(GitConfigServerApplication.class, args);
     }
 }
