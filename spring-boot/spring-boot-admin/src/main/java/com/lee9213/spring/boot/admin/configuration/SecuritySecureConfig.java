@@ -28,6 +28,8 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
         successHandler.setDefaultTargetUrl(adminContextPath + "/");
 
         http.authorizeRequests()
+                .antMatchers(adminContextPath + "/instances").permitAll()
+                .antMatchers(adminContextPath + "/actuator/**").permitAll()
                 .antMatchers(adminContextPath + "/assets/**").permitAll()
                 .antMatchers(adminContextPath + "/login").permitAll()
                 .anyRequest().authenticated()
@@ -36,10 +38,6 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl(adminContextPath + "/logout").and()
                 .httpBasic().and()
                 .csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .ignoringAntMatchers(
-                        "/instances",
-                        "/actuator/**"
-                );
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 }
