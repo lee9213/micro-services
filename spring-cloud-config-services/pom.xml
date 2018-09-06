@@ -17,6 +17,5 @@
         <module>spring-cloud-config-file-service</module>
         <module>spring-cloud-config-git-service</module>
         <module>spring-cloud-config-jdbc-service</module>
-        <module>spring-cloud-config-zookeeper-service</module>
     </modules>
 </project>
