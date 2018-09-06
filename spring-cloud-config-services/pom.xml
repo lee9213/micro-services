@@ -13,6 +13,10 @@
     <name>spring-cloud-config-services</name>
 
     <modules>
+        <module>spring-cloud-config-client</module>
+        <module>spring-cloud-config-file-service</module>
         <module>spring-cloud-config-git-service</module>
+        <module>spring-cloud-config-jdbc-service</module>
+        <module>spring-cloud-config-zookeeper-service</module>
     </modules>
 </project>

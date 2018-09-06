@@ -27,6 +27,8 @@
 
         <spring-boot-admin.version>2.0.2</spring-boot-admin.version>
         <zookeeper.version>3.4.12</zookeeper.version>
+        <druid.version>1.1.10</druid.version>
+        <mysql.version>5.1.44</mysql.version>
     </properties>
 
 
@@ -63,6 +65,16 @@
                         <artifactId>slf4j-log4j12</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
