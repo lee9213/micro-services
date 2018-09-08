@@ -1,0 +1,10 @@
+# 配置中心和服务注册发现中心配置
+spring:
+  cloud:
+    zookeeper:
+      connect-string: zkserver:2181
+      config:
+        root: /spring-cloud-zookeeper/config
+        profileSeparator: -
+      discovery:
+        root: /spring-cloud-zookeeper/services

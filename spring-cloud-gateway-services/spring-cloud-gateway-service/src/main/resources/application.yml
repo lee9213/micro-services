@@ -9,8 +9,6 @@ spring:
         metadata:
           management:
             port: 43000
-      # 配置zookeeper注册中心地址
-      connect-string: zkserver:2181
     # 路由配置
     gateway:
       routes:
