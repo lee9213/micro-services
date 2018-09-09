@@ -22,7 +22,8 @@ management:
     port: 43000
   # 显示健康具体信息
   endpoint:
-    health: show-details:always
+    health:
+      show-details: always
   # 开放所有页面端点
   endpoints:
     web:

@@ -1,0 +1,68 @@
+server:
+  port: 60007
+# 健康检查端口配置
+management:
+  server:
+    port: 60008
+# 显示健康具体信息
+  endpoint:
+    health:
+      show-details: always
+# 开放所有页面端点
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: gmall-user-provider
+  # 配置健康检查端口
+  cloud:
+    zookeeper:
+      discovery:
+        metadata:
+          management:
+            port: 60008
+      connect-string: zkserver:2181
+    # kafka配置
+    stream:
+      kafka:
+        binder:
+          brokers: kafka-server:9092
+          auto-add-partitions: true
+      bindings:
+        LUCKY_DRAW_CHANCE_TOPIC_INPUT:
+          binder: kafka
+          destination: LUCKY_DRAW_CHANCE_TOPIC
+  # 配置zipkin类型
+  zipkin:
+    sender:
+      type: kafka
+  # 配置kafka地址
+  kafka:
+    bootstrap-servers: kafka-server:9092
+
+# 数据库配置
+  datasource:
+    druid:
+      db-type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url:  jdbc:mysql://dbserver:3306/gmall?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+      username: root
+      password: QXyV6y4dwoDk25sO/pj9VDAGa9H1gq385zzOUlZrJVsNQGSvGuDUMk9IyPROpEohYSzXQtvE1lGPJeQB5+S7tQ==
+      initial-size: 2
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,config
+  sleuth:
+      sampler:
+        probability: 100

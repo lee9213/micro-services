@@ -1,0 +1,47 @@
+server:
+  port: 61002
+# 健康检查端口配置
+management:
+  server:
+    port: 61002
+  # 显示健康具体信息
+  endpoint:
+    health:
+      show-details: always
+  # 开放所有页面端点
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: gmall-sso
+  # 配置健康检查端口
+  cloud:
+    zookeeper:
+      discovery:
+        metadata:
+          management:
+            port: 61002
+      connect-string: zkserver:2181
+    # stream binder kafka配置
+    stream:
+      kafka:
+        binder:
+          brokers:
+            kafka-server: 9092
+          auto-add-partitions: true
+      bindings:
+        LUCKY_DRAW_CHANCE_TOPIC_OUTPUT:
+          binder: kafka
+          destination: LUCKY_DRAW_CHANCE_TOPIC
+  # 配置zipkin类型
+  zipkin:
+    sender:
+      type: kafka
+  # 配置kafka地址
+  kafka:
+    bootstrap-servers: kafka-server:9092
+  sleuth:
+    sampler:
+      probability: 100
