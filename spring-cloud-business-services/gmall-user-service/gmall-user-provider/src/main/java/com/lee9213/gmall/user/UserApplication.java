@@ -4,8 +4,8 @@ package com.lee9213.gmall.user;
 import com.lee9213.gmall.user.message.consumer.MessageConsumerSink;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 
@@ -16,7 +16,7 @@ import org.springframework.cloud.stream.annotation.StreamListener;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableCircuitBreaker
+@EnableHystrix
 @EnableBinding(MessageConsumerSink.class)
 public class UserApplication {
 
@@ -26,7 +26,7 @@ public class UserApplication {
 
 
     @StreamListener(MessageConsumerSink.INPUT)
-    public void onMessage(Object message){
-        System.out.println("注冊用戶成功,ID："+new String((byte[])message));
+    public void onMessage(Object message) {
+        System.out.println("注冊用戶成功,ID：" + new String((byte[]) message));
     }
 }

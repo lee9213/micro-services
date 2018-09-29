@@ -4,9 +4,9 @@ package com.lee9213.gmall.sso;
 import com.lee9213.gmall.sso.message.producer.MessageProducerSource;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ import org.springframework.web.context.request.RequestContextListener;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.lee9213.gmall.sso.service")
-@EnableCircuitBreaker
+@EnableHystrix
 @EnableBinding(MessageProducerSource.class)
 public class SsoApplication {
 
@@ -31,7 +31,7 @@ public class SsoApplication {
     }
 
     @Bean
-    public RequestContextListener requestContextListener(){
+    public RequestContextListener requestContextListener() {
         return new RequestContextListener();
     }
 
